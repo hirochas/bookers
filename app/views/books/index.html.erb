@@ -1,25 +1,29 @@
-<div class="title">Books</div>
+<h1>Books</h1>
 
-<% @books.each do |book| %>
+<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Body</th>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @books.each do |book| %>
+			<tr>
+				<td><%= book.title %></td>
+				<td><%= book.body %></td>
+				<td><%= link_to 'Show', book_path(book.id), class:"show_#{book.id}" %></td>
+				<td><%= link_to "Edit", edit_book_path(book.id), class:"edit_#{book.id}" %></td>
+				<td><%= link_to 'Destroy', book_path(book.id), method: :delete, data: { confirm: "Are you sure?" }, class:"destroy_#{book.id}" %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 
-  <p >Title</p>
- <% table= "book.title" %>
-
-   <% tr><p>Body</p>
-  <%= book.body %>
 
 
-    <%= link_to "show", book_path(book.id) %>
-
-    <%= link_to "edit", edit_book_path(book.id) %>
-
-    <%= link_to "delete", destroy_book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
-
-<% end %>
-
-
-
-<h1>New book</h1>
+<h2>New book</h2>
 
 <% if @book.errors.any? %>
   <%= @book.errors.count %>errors prohibited this book from being saved

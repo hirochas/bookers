@@ -14,13 +14,14 @@
 
   <h4>Body</h4>
   <%= f.text_area :body %>
-
+　<br>
   <%= f.submit 'Update Book' %>
 <% end %>
 
  <span>
     <%= link_to "Show", book_path(@book.id) %>
   </span>
+  |
   <span>
     <%= link_to 'Back', '/books' %>
   </span>
